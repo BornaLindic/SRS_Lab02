@@ -81,6 +81,21 @@ public class Usermgmt {
                     return;
                 }
 
+                if (commonPasswords10000.contains(String.valueOf(newPassword))) {
+                    System.out.println("Password change add failed. Passwords is on a list of 10_000 most commonly used passwords.");
+                    return;
+                }
+
+                if (newPassword.length < 8) {
+                    System.out.println("Password must be at least 8 characters long.");
+                    return;
+                }
+
+                if (!Utils.passwordIsCorrectFormat(newPassword)) {
+                    System.out.println("Password must contain a lowercase, uppercase, number and a digit!");
+                    return;
+                }
+
                 byte[] salt = salts.get(args[1]);
                 byte[] hash = Utils.generateHash(newPassword, salt);
                 if (Arrays.equals(hash, passwords.get(args[1]))) {
@@ -92,7 +107,7 @@ public class Usermgmt {
                 hash = Utils.generateHash(newPassword, salt);
 
                 passwords.put(args[1], hash);
-                salts.put(args[1], salt)
+                salts.put(args[1], salt);
                 Utils.store(passwords, salts);
 
                 System.out.println("Password change successful.");
