@@ -83,13 +83,16 @@ public class Usermgmt {
 
                 byte[] salt = salts.get(args[1]);
                 byte[] hash = Utils.generateHash(newPassword, salt);
-
                 if (Arrays.equals(hash, passwords.get(args[1]))) {
                     System.out.println("Old password can't be new password!");
                     return;
                 }
 
+                salt = Utils.generateSalt();
+                hash = Utils.generateHash(newPassword, salt);
+
                 passwords.put(args[1], hash);
+                salts.put(args[1], salt)
                 Utils.store(passwords, salts);
 
                 System.out.println("Password change successful.");
