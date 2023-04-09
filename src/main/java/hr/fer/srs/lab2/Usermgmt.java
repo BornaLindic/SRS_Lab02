@@ -40,7 +40,7 @@ public class Usermgmt {
                 }
 
                 if (commonPasswords10000.contains(String.valueOf(password))) {
-                    System.out.println("User add failed. Passwords is on a list of 10_000 most commonly used passwords.");
+                    System.out.println("User add failed. Password is on a list of 10_000 most commonly used passwords.");
                     return;
                 }
 
@@ -50,7 +50,7 @@ public class Usermgmt {
                 }
 
                 if (!Utils.passwordIsCorrectFormat(password)) {
-                    System.out.println("Password must contain a lowercase, uppercase, number and a digit!");
+                    System.out.println("Password must contain a lowercase, uppercase, number and a special character!");
                     return;
                 }
 

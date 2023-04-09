@@ -1,0 +1,12 @@
+Sustav se bazira na dvije mape, jedna pamti hashirane lozinke, a druga salt-ove koji su se koristili pri hashiranju.
+Svaki korisnik dakle ima svoj salt koji se mijenja svaki put kada se promijeni i šifra.
+Glavni programi nalaze se u Usemgmt i Login datotekama, a sve bitne metode su u Utils.
+
+Implementirane zaštite:
+1. Zaporke se hashiraju pomoću Javinog PBEKeySpeca duljine 128 bitova, sa 65536 iteracija. Nasumičnost se povećava korištenjem salta.
+   Salt za svaku šifru je jedinstven i generiran pomoću SecureRandom. Iz gore navedene specifikacije ključa dobiva se hash
+   pomoću SecretKeyFactory-ja koristeći "PBKDF2WithHmacSHA512".
+2. Prilikom generiranja zaporki provjerava se je li zaporka na listi 10_000 najčešće korištenih zaporki.
+3. Od svake se zaporke zahtjeva minimalna dužina 8 i sadržavanje velikog i malog slova, broja i posebnog znaka kako bi se otežalo pogađanje.
+4. Prilikom unosa zaporke ona je nevidljiva.
+5. Prilikom promjene zaporke i forsirane promjene zaporke, nova zaporka ne može biti ista kao stara.

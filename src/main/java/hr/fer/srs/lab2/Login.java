@@ -46,7 +46,7 @@ public class Login {
             }
 
             if (commonPasswords10000.contains(String.valueOf(newPassword))) {
-                System.out.println("Password change add failed. Passwords is on a list of 10_000 most commonly used passwords.");
+                System.out.println("Password change add failed. Password is on a list of 10_000 most commonly used passwords.");
                 return;
             }
 

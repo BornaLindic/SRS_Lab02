@@ -1,0 +1,7 @@
+mvn compile
+
+Upravljanje lozinkama:
+java -cp target/classes hr.fer.srs.lab2.Usermgmt [add, passwd, forcepass, del] [userName]
+
+Prijava:
+java -cp target/classes hr.fer.srs.lab2.Login [userName]
