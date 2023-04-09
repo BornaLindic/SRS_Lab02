@@ -72,7 +72,7 @@ public class Utils {
             if (Character.isUpperCase(c)) hasUpperCase = true;
             if (Character.isLowerCase(c)) hasLowerCase = true;
             if (Character.isDigit(c)) hasNumber = true;
-            if (!Character.isDigit(c) || !Character.isLetter(c)) hasSpecialCharacter = true;
+            if (!(Character.isDigit(c) || Character.isLetter(c))) hasSpecialCharacter = true;
         }
 
         return hasUpperCase && hasLowerCase && hasNumber && hasSpecialCharacter;
